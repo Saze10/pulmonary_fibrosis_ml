@@ -168,55 +168,9 @@ def sens_value(y_pred, y_true, thresh = 0.5):
 
     ## Tensor metrics
 
-# Ignore not working properly
-def spec(y_pred, y_true):
-
-    """
-    specificity:
-    y_pred = matrix of labels that are predicted to be true
-    y_true = labels that are true by the GT
-    not_true = labels that are not true by the GT
-    not_pred = labels that are predicted to be not true
-    return spec
-    """
-    # Subtracting the y_true and y_pred from 1 gives the complement 
-    not_true = 1 - y_true
-    not_pred = 1 - y_pred
-	
-    # Calculating FP and TN
-    FP = K.sum(K.round(not_true * y_pred))
-    TN = K.sum(K.round(not_true * not_pred))
-
-    spec = TN / (TN + FP + K.epsilon())
-    
-    return spec 
-
-# Ignore not working properly
-def sens(y_pred, y_true):
-
-    """
-    sensitivity:
-    y_pred = matrix of labels that are predicted to be true
-    y_true = labels that are true by the GT
-    not_true = labels that are not true by the GT
-    not_pred = labels that are predicted to be not true
-    return sens
-    """
-    
-    # Subtracting the y_true and y_pred from 1 gives the complement 
-    not_true = 1 - y_true
-    not_pred = 1 - y_pred
-	
-    # Calculating FN and TP
-    FN = K.sum(K.round(y_true * not_pred))
-    TP = K.sum(K.round(y_true * y_pred))
-
-    sens = TP / (TP + FN + K.epsilon())    
-
-    return sens 
 
 
-## evaluation metric function
+# evaluation metric function
 def laplace_log_likelihood(actual_fvc, predicted_fvc, confidence, return_values = False):
     """
     Calculates the modified Laplace Log Likelihood score for this competition.
