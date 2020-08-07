@@ -6,6 +6,8 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import sklearn.metrics
 
+# Most of this is actually irrelevant for the OSIC competition
+# We will be using laplace_log_likelihood the most, maybe plot_training
 
 # Training plot
 def plot_training(model_history, num_epochs, model_num):
